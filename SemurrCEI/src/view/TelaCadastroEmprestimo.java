@@ -467,7 +467,7 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
           if(evt.getStateChange() == ItemEvent.SELECTED)
         {
 
-                Equipamento equip = (Equipamento) txtEquipamento.getSelectedItem();
+                String equip = txtEquipamento.getSelectedItem().toString();
                     
                 //chama este metodo do controller
                 controller.atualizaComboTombo(equip);
@@ -480,7 +480,7 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
         if(evt.getStateChange() == ItemEvent.SELECTED)
         {
             
-            TipoEquipamento tipoequipamentonome = (TipoEquipamento) txtTipoEquip.getSelectedItem();
+            String tipoequipamentonome = txtTipoEquip.getSelectedItem().toString();
             
             //chama este metodo do controller
             controller.atualizaEquipamentoModelo(tipoequipamentonome);  

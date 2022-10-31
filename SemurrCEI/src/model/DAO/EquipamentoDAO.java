@@ -426,8 +426,7 @@ public class EquipamentoDAO
      
  }       
  
- //metodo para trazer todos modelos de equipamento por tipo equipamento
- public ArrayList<Equipamento> selecionarAllModeloPorTipoEquip(TipoEquipamento tipoequipamentonome) throws SQLException
+ public ArrayList<Equipamento> selecionarAllModeloPorTipoEquip(String tipoequipamentonome) throws SQLException
  {
      
      ArrayList equipamentos = new ArrayList();
@@ -440,7 +439,7 @@ public class EquipamentoDAO
          
         PreparedStatement pstm = conexao.prepareStatement(sql);
         
-        pstm.setObject(1, tipoequipamentonome);
+        pstm.setString(1, tipoequipamentonome);
         ResultSet rs = pstm.executeQuery();     
         while (rs.next())
         {
@@ -473,6 +472,7 @@ public class EquipamentoDAO
       return equipamentos;               
      
  }  
+ 
     //metodo para trazer todos equipamentos por fornecedor
     public ArrayList selecionarAllEquipPorFornecedor(String fornecedor) throws SQLException
     {
@@ -1053,7 +1053,7 @@ public class EquipamentoDAO
     }  
     
     //metodo para trazer todos os tombos por equipamento passando equip
-    public ArrayList selecioneAllEquipamentoTomboStringEquip(Equipamento equip) throws SQLException
+    public ArrayList selecioneAllEquipamentoTomboStringEquip(String equip) throws SQLException
     {
      
         ArrayList equipamentos = new ArrayList();
@@ -1066,7 +1066,7 @@ public class EquipamentoDAO
             
             PreparedStatement pstm = conexao.prepareStatement(sql);
             
-            pstm.setObject(1, equip);
+            pstm.setString(1, equip);
             
             ResultSet rs = pstm.executeQuery();
             
@@ -1148,7 +1148,7 @@ public class EquipamentoDAO
     }        
     
     //metodo para trazer todas as series por equipamento passando equip
-    public ArrayList<Equipamento> selecioneAllEquipamentoSerieStringEquip(Equipamento equip) throws SQLException
+    public ArrayList<Equipamento> selecioneAllEquipamentoSerieStringEquip(String equip) throws SQLException
     {
         
         ArrayList equipamentos = new ArrayList();
@@ -1161,7 +1161,7 @@ public class EquipamentoDAO
             
             PreparedStatement pstm = conexao.prepareStatement(sql);
             
-            pstm.setObject(1, equip);
+            pstm.setString(1, equip);
             
             ResultSet rs = pstm.executeQuery();
             

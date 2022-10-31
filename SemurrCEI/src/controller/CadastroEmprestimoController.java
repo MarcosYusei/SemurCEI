@@ -445,7 +445,7 @@ public class CadastroEmprestimoController
     }    
     
     //metodo para atualizar combobox equipamento passando tipoequipamentonome
-    public void atualizaEquipamentoModelo(TipoEquipamento tipoequipamentonome) 
+    public void atualizaEquipamentoModelo(String tipoequipamentonome) 
     {
         
         try
@@ -466,7 +466,7 @@ public class CadastroEmprestimoController
             for(Equipamento equipamento : equipamentos)
             {
                 
-                combomodel.addElement(equipamento.ModelotoString());
+                combomodel.addElement(equipamento.EquiptoString());
                 
             }             
             
@@ -481,7 +481,7 @@ public class CadastroEmprestimoController
     }         
     
     //metodo para atualizar combobox tombo passando equip
-    public void atualizaComboTombo(Equipamento equip)
+    public void atualizaComboTombo(String equip)
     {
         
         try
@@ -518,7 +518,7 @@ public class CadastroEmprestimoController
     }        
     
     //metodo para atualizar combo serie passando equip
-    public void atualizaComboSerie(Equipamento equip) 
+    public void atualizaComboSerie(String equip) 
     {
         
         try
