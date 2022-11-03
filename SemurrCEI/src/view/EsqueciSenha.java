@@ -1,5 +1,15 @@
 package view;
 
+import java.util.Properties;
+import java.util.Random;
+import javax.mail.Address;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.swing.JOptionPane;
+
 
 public class EsqueciSenha extends javax.swing.JFrame {
 
@@ -88,6 +98,55 @@ public class EsqueciSenha extends javax.swing.JFrame {
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
         //recuperar senha
+        try
+        {
+            
+            Random rand = new Random();
+            int randCodigo = rand.nextInt(99999999);
+            String host = "smtp.gmail.com";
+            String user = "tsnemailsndr@gmail.com";
+            String password = "17ec0@e1b46";
+        
+            String para = TxtEmail.getText();
+            String assunto = "Resetar senha";
+            String mensagem = "Seu codigo é"+randCodigo;
+            boolean sessionDebug = false;
+            Properties pros = System.getProperties();
+            pros.put("mail.smtp.starttls.enable", "true");
+            pros.put("mail.smtp.host", "host");
+            pros.put("mail.smtp.port", "587");
+            pros.put("mail.smtp.auth", "true");
+            java.security.Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
+        
+            Session mailSession = Session.getDefaultInstance(pros, null);
+        
+            mailSession.setDebug(sessionDebug);
+
+            Message msg = new MimeMessage(mailSession);
+        
+            msg.setFrom(new InternetAddress(user));
+        
+            InternetAddress [] address = {new InternetAddress(para)};
+        
+            //msg.setRecipient(Message.RecipientType.TO, address);
+        
+            msg.setSubject(assunto);
+            msg.setText(mensagem);
+            Transport transport = mailSession.getTransport("smtp");
+            transport.connect(host,user,password);
+            transport.sendMessage(msg, msg.getAllRecipients());
+            transport.close();
+        
+            JOptionPane.showMessageDialog(null, "CODIGO ENVIADO PARA O EMAIL");            
+            
+        }
+        catch(Exception ex)
+        {
+            
+            JOptionPane.showMessageDialog(null, "ERROR AO ENVIAR CODIGO PARA O EMAIL");      
+            
+        }    
+        
 
     }//GEN-LAST:event_btnEnviarActionPerformed
 

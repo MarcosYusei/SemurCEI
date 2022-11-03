@@ -11,7 +11,7 @@ public class Emprestimo
     public Integer id;
     public Unidade unidade = new Unidade();
     public TipoEquipamento tipoequip = new TipoEquipamento();
-    public Equipamento equipamento = new Equipamento();
+    public String modelo;
     public Unidade destino = new Unidade();
     public Nome nome;
     public Date dataSaida;
@@ -23,11 +23,11 @@ public class Emprestimo
     public String serie;    
     
     //Metodo construtor passando todos campos como obrigatorios
-    public Emprestimo(Integer id,Unidade unidade, TipoEquipamento tipoequip,Equipamento equipamento,Unidade destino, Nome nome, Date dataSaida, Date dataDevolucao, String status, String tipo, String observacao, String tombo, String serie) {
+    public Emprestimo(Integer id,Unidade unidade, TipoEquipamento tipoequip,String modelo,Unidade destino, Nome nome, Date dataSaida, Date dataDevolucao, String status, String tipo, String observacao, String tombo, String serie) {
         this.id = id;
         this.unidade = unidade;
         this.tipoequip = tipoequip;
-        this.equipamento = equipamento;
+        this.modelo = modelo;
         this.destino = destino;        
         this.nome = nome;
         try
@@ -70,10 +70,10 @@ public class Emprestimo
     }
     
     //metodo construtor sem o id
-    public Emprestimo(Unidade unidade, TipoEquipamento tipoequip,Equipamento equipamento,Unidade destino, Nome nome, Date dataSaida, Date dataDevolucao, String status, String tipo, String observacao, String tombo, String serie) {
+    public Emprestimo(Unidade unidade, TipoEquipamento tipoequip,String modelo,Unidade destino, Nome nome, Date dataSaida, Date dataDevolucao, String status, String tipo, String observacao, String tombo, String serie) {
         this.unidade = unidade;
         this.tipoequip = tipoequip;
-        this.equipamento = equipamento;
+        this.modelo = modelo;
         this.destino = destino;        
         this.nome = nome;        
         this.nome = nome;
@@ -148,12 +148,12 @@ public class Emprestimo
         this.tipoequip = tipoequip;
     }
 
-    public Equipamento getEquipamento() {
-        return equipamento;
+    public String getModelo() {
+        return modelo;
     }
 
-    public void setEquipamento(Equipamento equipamento) {
-        this.equipamento = equipamento;
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
     }
 
     public Unidade getDestino() {

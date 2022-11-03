@@ -52,7 +52,7 @@ public class CadastroEmprestimoController
     {
         
         //comparações logicas
-        if(view.getTxtUnidade().getSelectedIndex() != 0 && view.getTxtTipoEquip().getSelectedIndex() != 0 && view.getTxtEquipamento().getSelectedIndex() != 0 && view.getTxtDestino().getSelectedIndex() != 0
+        if(view.getTxtUnidade().getSelectedIndex() != 0 && view.getTxtTipoEquip().getSelectedIndex() != 0 && view.getTxtModelo().getSelectedIndex() != 0 && view.getTxtDestino().getSelectedIndex() != 0
         && view.getTxtNome().getSelectedIndex() != 0 && view.getTxtDataSaida().getDate()==null && view.getTxtDataDevolucao().getDate()==null && view.getTxtStatus().getSelectedIndex() != 0 && view.getTxtObservacao().getText().trim().isEmpty()
         && view.getTxtTombo().getSelectedIndex() != 0 && view.getTxtSerie().getSelectedIndex() != 0)
         {
@@ -66,10 +66,10 @@ public class CadastroEmprestimoController
             JOptionPane.showMessageDialog(null, "Campos unidade e/ou tipo equipamento vazio/s, selecione-os","ATENÇÃO", JOptionPane.WARNING_MESSAGE);
             
         }
-        if(view.getTxtDestino().getSelectedIndex() != 0 && view.getTxtEquipamento().getSelectedIndex() != 0)
+        if(view.getTxtDestino().getSelectedIndex() != 0 && view.getTxtModelo().getSelectedIndex() != 0)
         {    
         
-            JOptionPane.showMessageDialog(null, "Campos destino e/ou equipamento vazio/s, selecione-os","ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Campos destino e/ou modelo vazio/s, selecione-os","ATENÇÃO", JOptionPane.WARNING_MESSAGE);
             
         }       
         if(view.getTxtDataSaida().getDate()==null && view.getTxtDataDevolucao().getDate()==null)
@@ -98,7 +98,7 @@ public class CadastroEmprestimoController
         }
         
             //compara se todos os campos foram preenchidos
-            if(view.getTxtUnidade().getSelectedItem() != null && view.getTxtTipoEquip().getSelectedItem() != null && view.getTxtEquipamento().getSelectedItem() != null
+            if(view.getTxtUnidade().getSelectedItem() != null && view.getTxtTipoEquip().getSelectedItem() != null && view.getTxtModelo().getSelectedItem() != null
             && view.getTxtDestino().getSelectedItem() != null && view.getTxtNome().getSelectedItem() != null && view.getTxtDataSaida().getDate() != null && view.getTxtDataDevolucao().getDate() != null
             && view.getTxtStatus().getSelectedItem() != null && view.getTxtTipo().getSelectedItem() != null && view.getTxtTombo().getSelectedItem() != null & view.getTxtSerie().getSelectedItem() != null)
             {
@@ -184,21 +184,22 @@ public class CadastroEmprestimoController
                 {
                     
                     //quantidade de linhas que o objeto vai ter
-                    Object[] linha = new Object[12];
+                    Object[] linha = new Object[13];
                     
                     //pegue as respectivas linhas de cada emprestimo e as sete
                     linha[0] = emprestimo.getId();
                     linha[1] = emprestimo.getUnidade().getUnidadenome();
                     linha[2] = emprestimo.getTipoequip().getTipoequipamento();
-                    linha[3] = emprestimo.getEquipamento().getModelo();
+                    linha[3] = emprestimo.getModelo();
                     linha[4] = emprestimo.getDestino().getUnidadenome();
-                    linha[5] = emprestimo.getDataSaida();
-                    linha[6] = emprestimo.getDataDevolucao();
-                    linha[7] = emprestimo.getStatus();
-                    linha[8] = emprestimo.getTipo();
-                    linha[9] = emprestimo.getObservacao();
-                    linha[10] = emprestimo.getTombo();
-                    linha[11] = emprestimo.getSerie();
+                    linha[5] = emprestimo.getNome();
+                    linha[6] = emprestimo.getDataSaida();
+                    linha[7] = emprestimo.getDataDevolucao();
+                    linha[8] = emprestimo.getStatus();
+                    linha[9] = emprestimo.getTipo();
+                    linha[10] = emprestimo.getObservacao();
+                    linha[11] = emprestimo.getTombo();
+                    linha[12] = emprestimo.getSerie();
                     
                     //adicione as linhas ao modelo
                     modelo.addRow(linha);                                        
@@ -295,8 +296,8 @@ public class CadastroEmprestimoController
         
     }        
 
-    //metodo para atualizar combobox equipamento
-   public void atualizaEquipamento() 
+    //metodo para atualizar combobox modelo
+   public void atualizarModelo() 
     {
         
         try
@@ -311,7 +312,7 @@ public class CadastroEmprestimoController
             //cria arraylist de equipamento chamado equipamentos passando o objeto equipamentoDAO do tipo Equipamento chamando o metodo selecioneAllEquipamento
             ArrayList<Equipamento> equipamentos = equipamentoDAO.selecioneAllEquipamento();
             
-            DefaultComboBoxModel combomodel = (DefaultComboBoxModel) view.getTxtEquipamento().getModel();
+            DefaultComboBoxModel combomodel = (DefaultComboBoxModel) view.getTxtModelo().getModel();
             
             combomodel.removeAllElements();
             
@@ -459,7 +460,7 @@ public class CadastroEmprestimoController
             //cria arraylist de equipamento chamado equipamentos passando o objeto equipamentoDAO do tipo Equipamento chamando o metodo selecionarAllModeloPorTipoEquip passando tipoequipamentonome
             ArrayList<Equipamento> equipamentos = equipamentoDAO.selecionarAllModeloPorTipoEquip(tipoequipamentonome);
             
-            DefaultComboBoxModel combomodel = (DefaultComboBoxModel) view.getTxtEquipamento().getModel();
+            DefaultComboBoxModel combomodel = (DefaultComboBoxModel) view.getTxtModelo().getModel();
             
             combomodel.removeAllElements();
             
@@ -589,5 +590,5 @@ public class CadastroEmprestimoController
             
         } 
     
-    }        
+    }                
 }

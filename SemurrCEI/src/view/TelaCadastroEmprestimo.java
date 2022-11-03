@@ -11,8 +11,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import model.Equipamento;
-import model.TipoEquipamento;
+import static view.TelaCadastroEquipamento.jTabelaCadEquip;
 
 public class TelaCadastroEmprestimo extends javax.swing.JFrame {
     
@@ -55,8 +54,8 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
         lblDestino = new javax.swing.JLabel();
         lblNome = new javax.swing.JLabel();
         txtDestino = new javax.swing.JComboBox<>();
-        txtEquipamento = new javax.swing.JComboBox<>();
-        lblEquipamento = new javax.swing.JLabel();
+        txtModelo = new javax.swing.JComboBox<>();
+        lblModelo = new javax.swing.JLabel();
         txtUnidade = new javax.swing.JComboBox<>();
         lblTipoEquip = new javax.swing.JLabel();
         txtNome = new javax.swing.JComboBox<>();
@@ -72,7 +71,7 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
         lblObservacao = new javax.swing.JLabel();
         btnPesquisar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
-        btnExcluir = new javax.swing.JButton();
+        btnDevolver = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
         btnNovo = new javax.swing.JButton();
         txtTipoEquip = new javax.swing.JComboBox<>();
@@ -166,23 +165,23 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
         });
         getContentPane().add(txtDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 220, 30));
 
-        txtEquipamento.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        txtEquipamento.addItemListener(new java.awt.event.ItemListener() {
+        txtModelo.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        txtModelo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                txtEquipamentoItemStateChanged(evt);
+                txtModeloItemStateChanged(evt);
             }
         });
-        txtEquipamento.addActionListener(new java.awt.event.ActionListener() {
+        txtModelo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEquipamentoActionPerformed(evt);
+                txtModeloActionPerformed(evt);
             }
         });
-        getContentPane().add(txtEquipamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 320, 30));
+        getContentPane().add(txtModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 320, 30));
 
-        lblEquipamento.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblEquipamento.setForeground(new java.awt.Color(255, 255, 255));
-        lblEquipamento.setText("EQUIPAMENTO:");
-        getContentPane().add(lblEquipamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, 30));
+        lblModelo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblModelo.setForeground(new java.awt.Color(255, 255, 255));
+        lblModelo.setText("MODELO:");
+        getContentPane().add(lblModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, 30));
 
         txtUnidade.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         txtUnidade.addActionListener(new java.awt.event.ActionListener() {
@@ -285,16 +284,16 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
         });
         getContentPane().add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 280, 110, 40));
 
-        btnExcluir.setBackground(new java.awt.Color(30, 129, 176));
-        btnExcluir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnExcluir.setForeground(new java.awt.Color(255, 255, 255));
-        btnExcluir.setText("EXCLUIR");
-        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+        btnDevolver.setBackground(new java.awt.Color(30, 129, 176));
+        btnDevolver.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnDevolver.setForeground(new java.awt.Color(255, 255, 255));
+        btnDevolver.setText("DEVOLVER");
+        btnDevolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluirActionPerformed(evt);
+                btnDevolverActionPerformed(evt);
             }
         });
-        getContentPane().add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 330, 110, 40));
+        getContentPane().add(btnDevolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 330, 110, 40));
 
         btnVoltar.setBackground(new java.awt.Color(30, 129, 176));
         btnVoltar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -425,12 +424,12 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
         } 
     }//GEN-LAST:event_btnVoltarActionPerformed
 
-    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+    private void btnDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverActionPerformed
         //controller chama metodo devolver
 
         //chama o metodo iniciar
         iniciar();
-    }//GEN-LAST:event_btnExcluirActionPerformed
+    }//GEN-LAST:event_btnDevolverActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
 
@@ -463,18 +462,18 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
         telacadnome.setVisible(true);  
     }//GEN-LAST:event_JButtonNomeActionPerformed
 
-    private void txtEquipamentoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_txtEquipamentoItemStateChanged
+    private void txtModeloItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_txtModeloItemStateChanged
           if(evt.getStateChange() == ItemEvent.SELECTED)
         {
 
-                String equip = txtEquipamento.getSelectedItem().toString();
+                String equip = txtModelo.getSelectedItem().toString();
                     
                 //chama este metodo do controller
                 controller.atualizaComboTombo(equip);
                 controller.atualizaComboSerie(equip);              
             
         }
-    }//GEN-LAST:event_txtEquipamentoItemStateChanged
+    }//GEN-LAST:event_txtModeloItemStateChanged
 
     private void txtTipoEquipItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_txtTipoEquipItemStateChanged
         if(evt.getStateChange() == ItemEvent.SELECTED)
@@ -490,11 +489,11 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
     
     }//GEN-LAST:event_txtTipoEquipItemStateChanged
 
-    private void txtEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEquipamentoActionPerformed
+    private void txtModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtModeloActionPerformed
  
         
             
-    }//GEN-LAST:event_txtEquipamentoActionPerformed
+    }//GEN-LAST:event_txtModeloActionPerformed
 
     /**
      * @param args the command line arguments
@@ -550,11 +549,11 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
     }
 
     public static JButton getBtnExcluir() {
-        return btnExcluir;
+        return btnDevolver;
     }
 
     public static void setBtnExcluir(JButton btnExcluir) {
-        TelaCadastroEmprestimo.btnExcluir = btnExcluir;
+        TelaCadastroEmprestimo.btnDevolver = btnExcluir;
     }
 
     public static JButton getBtnNovo() {
@@ -629,12 +628,12 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
         TelaCadastroEmprestimo.txtDestino = txtDestino;
     }
 
-    public static JComboBox<String> getTxtEquipamento() {
-        return txtEquipamento;
+    public static JComboBox<String> getTxtModelo() {
+        return txtModelo;
     }
 
-    public static void setTxtEquipamento(JComboBox<String> txtEquipamento) {
-        TelaCadastroEmprestimo.txtEquipamento = txtEquipamento;
+    public static void setTxtModelo(JComboBox<String> txtModelo) {
+        TelaCadastroEmprestimo.txtModelo = txtModelo;
     }
 
     public JTextField getTxtId() {
@@ -723,8 +722,8 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
             //inicia combobox atualizarTipoEquip
             controller.atualizarTipoEquip();
             
-            //inicia combobox atualizaEquipamento
-            controller.atualizaEquipamento();
+            //inicia combobox atualizarModelo
+            controller.atualizarModelo();
             
             //inicia combobox atualizaDestino
             controller.atualizardestino();
@@ -737,6 +736,14 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
             
             //inicia combobo serie
             controller.atualizaSerie();
+            
+            //chama este metodo do controller
+            controller.tabelaEmprestimo();
+       
+            jTabelaCadEmprestimo.setRowSelectionAllowed(true);
+            
+            //impessa o jtable de se auto redimensionar
+            jTabelaCadEmprestimo.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);            
         
             //as linhas abaixo define o tamanho das colunas da tabela
             //tabela pegue o modelo de coluna, pegue a coluna zero e sete a largura
@@ -758,9 +765,9 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton JButtonNome;
+    public static javax.swing.JButton btnDevolver;
     public static javax.swing.JButton btnEditar;
     public static javax.swing.JButton btnEmprestar;
-    public static javax.swing.JButton btnExcluir;
     public static javax.swing.JButton btnNovo;
     public static javax.swing.JButton btnPesquisar;
     public static javax.swing.JButton btnVoltar;
@@ -770,8 +777,8 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
     private javax.swing.JLabel lblDataDevolucao;
     private javax.swing.JLabel lblDataSaida;
     private javax.swing.JLabel lblDestino;
-    private javax.swing.JLabel lblEquipamento;
     private javax.swing.JLabel lblID;
+    private javax.swing.JLabel lblModelo;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblObservacao;
     private javax.swing.JLabel lblSerie;
@@ -785,8 +792,8 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
     public static com.toedter.calendar.JDateChooser txtDataDevolucao;
     public static com.toedter.calendar.JDateChooser txtDataSaida;
     public static javax.swing.JComboBox<String> txtDestino;
-    public static javax.swing.JComboBox<String> txtEquipamento;
     public static javax.swing.JTextField txtId;
+    public static javax.swing.JComboBox<String> txtModelo;
     public static javax.swing.JComboBox<String> txtNome;
     public static javax.swing.JTextArea txtObservacao;
     public static javax.swing.JComboBox txtSerie;

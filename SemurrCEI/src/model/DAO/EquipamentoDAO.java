@@ -194,6 +194,7 @@ public class EquipamentoDAO
             equipamento.setFabricante(fabricante);
 
             equipamento.setModelo(rs.getString("modelo"));
+            
             equipamento.setStatus(rs.getString("status"));
             equipamento.setEquipamento(rs.getString("equipamento"));
             equipamento.setObservacao(rs.getString("observacao"));
@@ -446,7 +447,38 @@ public class EquipamentoDAO
             
             Equipamento equipamento = new Equipamento();
             //Laço de repetição para preencher com os dados do banco o objeto equipamento;
+            equipamento.setId(rs.getInt("id"));
+            
+            Unidade unidade1 = new Unidade();
+            unidade1.setId(rs.getInt("id"));
+            unidade1.setUnidadenome(rs.getString("unidadenome"));
+            
+            equipamento.setUnidade(unidade1);
+            
+            TipoEquipamento tipoequipamento = new TipoEquipamento();
+            tipoequipamento.setId(rs.getInt("id"));
+            tipoequipamento.setTipoequipamento(rs.getString("tipoequipamentonome"));
+            
+            equipamento.setTipoequip(tipoequipamento);
+            
+            equipamento.setTombo(rs.getString("tombo"));
+            equipamento.setSerie(rs.getString("serie"));
+            
+            Fornecedor fornecedor = new Fornecedor();
+            fornecedor.setId(rs.getInt("id"));
+            fornecedor.setFornecedornome(rs.getString("fornecedornome"));
+            
+            equipamento.setFornecedor(fornecedor);
+            
+            Fabricante fabricante = new Fabricante();
+            fabricante.setId(rs.getInt("id"));
+            fabricante.setFabricantenome(rs.getString("fabricantenome"));
+            
+            equipamento.setFabricante(fabricante);
+
             equipamento.setModelo(rs.getString("modelo"));
+            equipamento.setStatus(rs.getString("status"));
+            equipamento.setEquipamento(rs.getString("equipamento"));
             
             equipamentos.add(equipamento);            
             

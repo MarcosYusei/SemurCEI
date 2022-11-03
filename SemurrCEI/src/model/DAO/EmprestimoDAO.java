@@ -29,7 +29,7 @@ public class EmprestimoDAO
     public void inserir(Emprestimo emprestimo) throws SQLException
     {
         
-        String sql = "insert into emprestimo(unidade,tipoequip,equipamento,destino,nome,dataSaida,dataDevolucao,status,tipo,observacao,tombo,serie)values (?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into emprestimo(unidade,tipoequip,modelo,destino,nome,dataSaida,dataDevolucao,status,tipo,observacao,tombo,serie)values (?,?,?,?,?,?,?,?,?,?,?,?)";
         
         //criamos um statement para executar a query sql
         PreparedStatement pstm = conexao.prepareStatement(sql);
@@ -40,7 +40,7 @@ public class EmprestimoDAO
             //antes de executar pstm setString
             pstm.setInt(1, emprestimo.getUnidade().getId());
             pstm.setInt(2, emprestimo.getTipoequip().getId());
-            pstm.setInt(3, emprestimo.getEquipamento().getId());
+            pstm.setString(3, emprestimo.getModelo());
             pstm.setInt(4, emprestimo.getDestino().getId());
             pstm.setInt(5, emprestimo.getNome().getId());
             pstm.setDate(6, new java.sql.Date(emprestimo.getDataDevolucao().getTime()));
@@ -76,7 +76,7 @@ public class EmprestimoDAO
     public ArrayList<Emprestimo> selecioneAllEmprestimos() throws SQLException
     {
         
-        String sql ="select * from emprestimo as e inner join unidade u on e.unidade = u.id inner join nome as n on e.nome = n.id inner join tipoequipamento as tipoequi on e.tipoequip = tipoequi.id inner join equipamento eq on e.equipamento = eq.id inner join unidade udestino on e.destino = udestino.id";
+        String sql ="select * from emprestimo as e inner join unidade u on e.unidade = u.id inner join nome as n on e.nome = n.id inner join tipoequipamento as tipoequi on e.tipoequip = tipoequi.id inner join unidade udestino on e.destino = udestino.id";
         
         ArrayList<Emprestimo> emprestimos = new ArrayList<>();
      
@@ -106,11 +106,7 @@ public class EmprestimoDAO
             
             emprestimo.setTipoequip(tipoequipamento);
             
-            Equipamento equipamento = new Equipamento();
-            equipamento.setId(rs.getInt("id"));
-            equipamento.setModelo(rs.getString("modelo"));
-            
-            emprestimo.setEquipamento(equipamento);
+            emprestimo.setModelo(rs.getString("modelo"));
             
             Unidade destino = new Unidade();
             destino.setId(rs.getInt("id"));
