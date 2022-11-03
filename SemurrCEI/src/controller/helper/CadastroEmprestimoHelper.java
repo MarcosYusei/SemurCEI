@@ -4,7 +4,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import model.Emprestimo;
-import model.Equipamento;
 import model.TipoEquipamento;
 import model.Unidade;
 import view.TelaCadastroEmprestimo;
@@ -114,7 +113,7 @@ public class CadastroEmprestimoHelper
 
         try 
         {
-            Date data = new SimpleDateFormat("dd-MM-yyyy").parse((String)view.jTabelaCadEmprestimo.getModel().getValueAt(setar, 6));
+            Date data = new SimpleDateFormat("dd/MM/yyyy").parse((String)view.jTabelaCadEmprestimo.getModel().getValueAt(setar, 6));
             
             view.txtDataSaida.setDate(data);
         } catch (ParseException ex) 
@@ -124,7 +123,7 @@ public class CadastroEmprestimoHelper
         
         try 
         {
-            Date data = new SimpleDateFormat("dd-MM-yyyy").parse((String)view.jTabelaCadEmprestimo.getModel().getValueAt(setar, 7));
+            Date data = new SimpleDateFormat("dd/MM/yyyy").parse((String)view.jTabelaCadEmprestimo.getModel().getValueAt(setar, 7));
             
             view.txtDataDevolucao.setDate(data);
         } catch (ParseException ex) 
