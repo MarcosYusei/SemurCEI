@@ -133,7 +133,7 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
         getContentPane().add(txtEquipamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 130, 290, 30));
 
         txtStatus.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        txtStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECIONE UM STATUS", "FUNCIONAL", "MANUTENCAO", "INSERVIVEL" }));
+        txtStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECIONE UM STATUS", "FUNCIONAL", "MANUTENCAO", "INSERVIVEL", "DISPONIVEL", "INDISPONIVEL" }));
         getContentPane().add(txtStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 90, 280, 30));
 
         lblUnidade.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N

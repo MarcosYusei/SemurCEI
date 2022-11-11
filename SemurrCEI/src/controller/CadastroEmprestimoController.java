@@ -3,7 +3,10 @@ package controller;
 import controller.helper.CadastroEmprestimoHelper;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -102,16 +105,6 @@ public class CadastroEmprestimoController
             && view.getTxtDestino().getSelectedItem() != null && view.getTxtNome().getSelectedItem() != null && view.getTxtDataSaida().getDate() != null && view.getTxtDataDevolucao().getDate() != null
             && view.getTxtStatus().getSelectedItem() != null && view.getTxtTipo().getSelectedItem() != null && view.getTxtTombo().getSelectedItem() != null & view.getTxtSerie().getSelectedItem() != null)
             {
-                
-                if(view.getTxtStatus().getSelectedItem().equals("INDISPONIVEL") || view.getTxtStatus().getSelectedItem().equals("MANUTENÇÃO")
-                   || view.getTxtStatus().getSelectedItem().equals("EMPRESTADO") || view.getTxtStatus().getSelectedItem().equals("SELECIONE UM STATUS"))
-                {
-                    
-                    JOptionPane.showMessageDialog(null, "Error equipamento emprestado/indisponivel ou manutenção!","ATENÇÃO", JOptionPane.WARNING_MESSAGE);
-                    
-                }    
-                else
-                {
                     
                     //pega um emprestimo da view Emprestimo
                     Emprestimo emprestimo = helper.obterModeloSemID();
@@ -119,20 +112,70 @@ public class CadastroEmprestimoController
                     try
                     {
                         
+                        String equipamentoU = emprestimo.modelo;
+                        
+                        //verifica se existe no banco de dados
                         //cria objeto do tipo connection conexao passando novo Conexao(conexao.java) chamando metodo conectar
                         Connection conexao = new Conexao().Conectar();
-                        //cria objeto do tipo EmprestimoDAO chamado emprestimoDAO passando novo EmprestimoDAO recebendo conexao    
-                        EmprestimoDAO emprestimoDAO = new EmprestimoDAO(conexao);
-                        //arraylist do tipo emprestimo chamado emprestimos recebe emprestimoDAO.inserir
-                        emprestimoDAO.inserir(emprestimo);
+                        //cria objeto do tipo EquipamentoDAO chamado equipamentoDAO passando novo EquipamentoDAO recebendo conexao   
+                        EquipamentoDAO equipamentoDAO = new EquipamentoDAO(conexao);
+
+                        //valor booleano chamado existe recebe equipamentoDAO.selecionarFuncionalDisponivel
+                        //existe Equipamento disponivel ou funcional no banco de dados?
+                        boolean existe = equipamentoDAO.selecionarFuncionalDisponivel(equipamentoU);
                         
-                        //helper chama o metodo bloquear campos
-                        helper.bloquearCampos();
+                        //se existir equipamento disponivel e funcional
+                        if(existe)
+                        {
+                            
+                            equipamentoU = emprestimo.modelo;
+                            
+                            //verifica se existe no banco de dados
+                            //cria objeto do tipo connection conexao passando novo Conexao(conexao.java) chamando metodo conectar
+                            Connection conexaoEmprestimo = new Conexao().Conectar();
+                            //cria objeto do tipo EmprestimoDAO chamado emprestimoDAO passando novo EmprestimoDAO recebendo conexao   
+                            EmprestimoDAO emprestimoDAO = new EmprestimoDAO(conexaoEmprestimo);                            
+                            
+                            //valor booleano chamado nExisteEmprestimo recebe emprestimoDAO.selecionaEquipEmprestimo
+                            //existe Emprestimo com equipamento que não esteja emprestado?
+                            boolean nExisteEmprestimo = emprestimoDAO.selecionaEquipEmprestimo(equipamentoU);                            
+                            
+                            //se existir emprestimo com equipamento emprestado
+                            if(nExisteEmprestimo)
+                            {
+                                
+                                JOptionPane.showMessageDialog(null, "Equipamento já emprestado!","ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+                                
+                            }
+                            else if(!nExisteEmprestimo)
+                            {
+                                
+                                //cria objeto do tipo connection conexao passando novo Conexao(conexao.java) chamando metodo conectar
+                                Connection conexao3 = new Conexao().Conectar();
+                                //cria objeto do tipo EmprestimoDAO chamado emprestimoDAO passando novo EmprestimoDAO recebendo conexao    
+                                EmprestimoDAO emprestimoDAO2 = new EmprestimoDAO(conexao3);
+                                //arraylist do tipo emprestimo chamado emprestimos recebe emprestimoDAO.inserir
+                                emprestimoDAO2.inserir(emprestimo);
                         
-                        //chama tabela equipamentos;
-                        tabelaEmprestimo();
+                                //helper chama o metodo bloquear campos
+                                helper.bloquearCampos();
                         
-                       JOptionPane.showMessageDialog(null, "Equipamento emprestado com sucesso!"); 
+                                //chama tabela equipamentos;
+                                tabelaEmprestimo();
+                        
+                                JOptionPane.showMessageDialog(null, "Equipamento emprestado com sucesso!");                                 
+                                
+                                
+                            }    
+                            
+                            
+                        }
+                        else//senão
+                        {
+                            
+                            JOptionPane.showMessageDialog(null, "Equipamento manutenção ou inservivel","ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+                            
+                        }           
                         
                     }
                     catch(SQLException ex)
@@ -143,10 +186,16 @@ public class CadastroEmprestimoController
                     }    
                     
                 }    
-                
-            }
         
     }            
+    
+    //metodo para devolver emprestimo
+    public void DevolverEmprestimo()
+    {
+        
+        
+        
+    }        
     
     //metodo tabelaEmprestimo
     public void tabelaEmprestimo()
@@ -193,8 +242,13 @@ public class CadastroEmprestimoController
                     linha[3] = emprestimo.getModelo();
                     linha[4] = emprestimo.getDestino().getUnidadenome();
                     linha[5] = emprestimo.getNome();
-                    linha[6] = emprestimo.getDataSaida();
-                    linha[7] = emprestimo.getDataDevolucao();
+                    
+                    String dataSaida = new SimpleDateFormat("dd-MM-yyyy").format((Date)emprestimo.getDataSaida());
+                    String dataDevolucao = new SimpleDateFormat("dd-MM-yyyy").format((Date)emprestimo.getDataDevolucao());
+                    
+                    
+                    linha[6] = dataSaida;
+                    linha[7] = dataDevolucao;
                     linha[8] = emprestimo.getStatus();
                     linha[9] = emprestimo.getTipo();
                     linha[10] = emprestimo.getObservacao();
@@ -349,16 +403,16 @@ public class CadastroEmprestimoController
             UnidadeDAO unidadedao = new UnidadeDAO(conexao);
             
             //cria arraylist de unidade chamado unidades passando o objeto unidadedao do tipo Unidade chamando o metodo selecioneAllUnidade
-            ArrayList<Unidade> unidades = unidadedao.selecioneAllUnidade();
+            ArrayList<Unidade> unidades2 = unidadedao.selecioneAllUnidade();
          
-            DefaultComboBoxModel combomodel = (DefaultComboBoxModel) view.getTxtDestino().getModel();
+            DefaultComboBoxModel combomodel2 = (DefaultComboBoxModel) view.getTxtDestino().getModel();
             
-            combomodel.removeAllElements();
+            combomodel2.removeAllElements();
             
-            for(Unidade unidade : unidades)
+            for(Unidade unidade2 : unidades2)
             {
                 
-                combomodel.addElement(unidade);
+                combomodel2.addElement(unidade2);
                 
             }    
      }

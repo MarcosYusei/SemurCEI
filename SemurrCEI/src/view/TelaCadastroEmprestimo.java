@@ -11,7 +11,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import static view.TelaCadastroEquipamento.jTabelaCadEquip;
 
 public class TelaCadastroEmprestimo extends javax.swing.JFrame {
     
@@ -199,9 +198,11 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
         txtNome.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         getContentPane().add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 380, 30));
 
+        txtDataSaida.setDateFormatString("dd-MM-yyyy");
         txtDataSaida.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         getContentPane().add(txtDataSaida, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 280, 30));
 
+        txtDataDevolucao.setDateFormatString("dd-MM-yyyy");
         txtDataDevolucao.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         getContentPane().add(txtDataDevolucao, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 280, 30));
 
@@ -244,7 +245,7 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
         getContentPane().add(lblStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, 30));
 
         txtStatus.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        txtStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECIONE UM STATUS", "EMPRESTADO", "DISPONIVEL", "INDISPONIVEL", "MANUTENÇÃO" }));
+        txtStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECIONE UM STATUS", "EMPRESTADO", "DEVOLVIDO" }));
         txtStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtStatusActionPerformed(evt);
@@ -426,7 +427,8 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
 
     private void btnDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverActionPerformed
         //controller chama metodo devolver
-
+        controller.DevolverEmprestimo();
+        
         //chama o metodo iniciar
         iniciar();
     }//GEN-LAST:event_btnDevolverActionPerformed
@@ -451,7 +453,7 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
 
     private void jTabelaCadEmprestimoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabelaCadEmprestimoMouseClicked
         //Chama o helper metodo obter modelo;
-        helper.obterModelo();
+        helper.obterModeloSemID();
     }//GEN-LAST:event_jTabelaCadEmprestimoMouseClicked
 
     private void JButtonNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonNomeActionPerformed
@@ -465,12 +467,12 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
     private void txtModeloItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_txtModeloItemStateChanged
           if(evt.getStateChange() == ItemEvent.SELECTED)
         {
-
+            
                 String equip = txtModelo.getSelectedItem().toString();
-                    
+                
                 //chama este metodo do controller
                 controller.atualizaComboTombo(equip);
-                controller.atualizaComboSerie(equip);              
+                controller.atualizaComboSerie(equip);    
             
         }
     }//GEN-LAST:event_txtModeloItemStateChanged
@@ -479,7 +481,7 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
         if(evt.getStateChange() == ItemEvent.SELECTED)
         {
             
-            String tipoequipamentonome = txtTipoEquip.getSelectedItem().toString();
+            String tipoequipamentonome = txtTipoEquip.getSelectedItem().toString();        
             
             //chama este metodo do controller
             controller.atualizaEquipamentoModelo(tipoequipamentonome);  

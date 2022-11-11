@@ -14,8 +14,8 @@ public class Emprestimo
     public String modelo;
     public Unidade destino = new Unidade();
     public Nome nome;
-    public Date dataSaida;
-    public Date dataDevolucao;
+    public Date dataSaida = new Date();
+    public Date dataDevolucao = new Date();
     public String status;
     public String tipo;
     public String observacao;
@@ -33,7 +33,7 @@ public class Emprestimo
         try
         {
             
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.UK);
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.UK);
             
             String dataParastring = sdf.format(dataSaida);
             Date dateDeString = sdf.parse(dataParastring);
@@ -51,7 +51,7 @@ public class Emprestimo
         try
         {
             
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.UK);
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.UK);
             
             String dataParastring = sdf.format(dataDevolucao);
             Date dateDeString = sdf.parse(dataParastring);
@@ -80,7 +80,7 @@ public class Emprestimo
         try
         {
             
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.UK);
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
             
             String dataParastring = sdf.format(dataSaida);
             Date dateDeString = sdf.parse(dataParastring);
@@ -98,7 +98,7 @@ public class Emprestimo
         try
         {
             
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.UK);
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
             
             String dataParastring = sdf.format(dataDevolucao);
             Date dateDeString = sdf.parse(dataParastring);

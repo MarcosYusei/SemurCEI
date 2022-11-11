@@ -348,6 +348,7 @@
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="txtDataSaida">
       <Properties>
+        <Property name="dateFormatString" type="java.lang.String" value="dd-MM-yyyy"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="20" style="1"/>
         </Property>
@@ -363,6 +364,7 @@
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="txtDataDevolucao">
       <Properties>
+        <Property name="dateFormatString" type="java.lang.String" value="dd-MM-yyyy"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="20" style="1"/>
         </Property>
@@ -489,12 +491,10 @@
           <Font name="Tahoma" size="20" style="1"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="5">
+          <StringArray count="3">
             <StringItem index="0" value="SELECIONE UM STATUS"/>
             <StringItem index="1" value="EMPRESTADO"/>
-            <StringItem index="2" value="DISPONIVEL"/>
-            <StringItem index="3" value="INDISPONIVEL"/>
-            <StringItem index="4" value="MANUTEN&#xc7;&#xc3;O"/>
+            <StringItem index="2" value="DEVOLVIDO"/>
           </StringArray>
         </Property>
       </Properties>

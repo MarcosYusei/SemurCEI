@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 03-Nov-2022 às 14:52
+-- Tempo de geração: 08-Nov-2022 às 15:30
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -64,7 +64,9 @@ CREATE TABLE `emprestimo` (
 --
 
 INSERT INTO `emprestimo` (`id`, `unidade`, `tipoequip`, `modelo`, `destino`, `nome`, `dataSaida`, `dataDevolucao`, `status`, `tipo`, `observacao`, `tombo`, `serie`) VALUES
-(1, 1, 1, '22MP55PQ-BK', 1, 1, '2022-11-30', '2022-11-01', 'DISPONIVEL', 'EMPRESTIMO', '', 'S/T', '001890');
+(1, 1, 1, '22MP55PQ-BK', 1, 1, '2022-11-30', '2022-11-02', 'DISPONIVEL', 'EMPRESTIMO', '', 'S/T', '001890'),
+(2, 1, 1, '22MP55PQ-BK', 1, 1, '2022-11-30', '2022-11-18', 'DISPONIVEL', 'EMPRESTIMO', '', 'S/T', '001890'),
+(3, 1, 1, '22MP55PQ-BK', 1, 1, '2022-11-25', '2022-11-11', 'DISPONIVEL', 'EMPRESTIMO', '', 'S/T', '001890');
 
 -- --------------------------------------------------------
 
@@ -91,7 +93,9 @@ CREATE TABLE `equipamento` (
 --
 
 INSERT INTO `equipamento` (`id`, `unidade`, `tipoequip`, `tombo`, `serie`, `fornecedor`, `fabricante`, `modelo`, `status`, `equipamento`, `observacao`) VALUES
-(1, 1, 3, 'S/T', '001890', 3, 3, '22MP55PQ-BK', 'FUNCIONAL', 'PATRIMONIO', '');
+(1, 1, 3, 'S/T', '001890', 3, 3, '22MP55PQ-BK', 'FUNCIONAL', 'PATRIMONIO', ''),
+(2, 1, 1, '307-816', '764936', 3, 5, 'L5000', 'FUNCIONAL', 'PATRIMONIO', ''),
+(3, 1, 6, '356-179', '00024', 3, 6, 'LM1000B1', 'FUNCIONAL', 'PATRIMONIO', '');
 
 -- --------------------------------------------------------
 
@@ -112,7 +116,9 @@ INSERT INTO `fabricante` (`id`, `fabricantenome`) VALUES
 (1, 'AMD'),
 (2, 'COMTECH'),
 (3, 'DATEN'),
-(4, 'TESTE');
+(4, 'TESTE'),
+(5, 'LOGIN'),
+(6, 'BMI');
 
 -- --------------------------------------------------------
 
@@ -214,7 +220,8 @@ INSERT INTO `tipoequipamento` (`id`, `tipoequipamentonome`) VALUES
 (2, 'IMPRESSORA'),
 (3, 'MONITOR'),
 (4, 'CABO HDMI'),
-(5, 'TESTE');
+(5, 'TESTE'),
+(6, 'ESTABILIZADOR');
 
 -- --------------------------------------------------------
 
@@ -247,7 +254,8 @@ ALTER TABLE `emprestimo`
   ADD PRIMARY KEY (`id`),
   ADD KEY `unidade_2` (`unidade`),
   ADD KEY `empres_tipoequip` (`tipoequip`),
-  ADD KEY `nome` (`nome`);
+  ADD KEY `nome` (`nome`),
+  ADD KEY `destino` (`destino`);
 
 --
 -- Índices para tabela `equipamento`
@@ -311,19 +319,19 @@ ALTER TABLE `unidade`
 -- AUTO_INCREMENT de tabela `emprestimo`
 --
 ALTER TABLE `emprestimo`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `equipamento`
 --
 ALTER TABLE `equipamento`
-  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `fabricante`
 --
 ALTER TABLE `fabricante`
-  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `fornecedor`
@@ -353,7 +361,7 @@ ALTER TABLE `nome`
 -- AUTO_INCREMENT de tabela `tipoequipamento`
 --
 ALTER TABLE `tipoequipamento`
-  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `unidade`
@@ -369,9 +377,10 @@ ALTER TABLE `unidade`
 -- Limitadores para a tabela `emprestimo`
 --
 ALTER TABLE `emprestimo`
-  ADD CONSTRAINT `destino` FOREIGN KEY (`unidade`) REFERENCES `equipamento` (`unidade`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `empres_tipoequip` FOREIGN KEY (`tipoequip`) REFERENCES `tipoequipamento` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `empres_unidade` FOREIGN KEY (`unidade`) REFERENCES `equipamento` (`unidade`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `empres_tipoequip` FOREIGN KEY (`tipoequip`) REFERENCES `tipoequipamento` (`id`),
+  ADD CONSTRAINT `empres_unidade` FOREIGN KEY (`unidade`) REFERENCES `equipamento` (`unidade`),
+  ADD CONSTRAINT `emprestimo_destino` FOREIGN KEY (`destino`) REFERENCES `unidade` (`id`),
+  ADD CONSTRAINT `emprestimo_nome` FOREIGN KEY (`nome`) REFERENCES `nome` (`id`);
 
 --
 -- Limitadores para a tabela `equipamento`
