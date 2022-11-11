@@ -71,6 +71,53 @@ public class EmprestimoDAO
         
     } 
     
+    //função para atualizar(update)
+    public void atualizar(Emprestimo emprestimo) throws SQLException
+    {
+        
+        String sql = "update emprestimo set unidade = ?, tipoequip = ?, destino = ?, nome = ?, dataSaida = ?,"
+        + "dataDevolucao = ?, status = ?, tipo = ?, observacao = ?, tombo = ?, serie = ? where id = ?";
+        
+        //criamos um statement para executar a query sql
+        PreparedStatement pstm = conexao.prepareStatement(sql);
+        
+            try
+            {
+                
+            //antes de executar pstm setString
+            pstm.setInt(1, emprestimo.getUnidade().getId());
+            pstm.setInt(2, emprestimo.getTipoequip().getId());
+            pstm.setString(3, emprestimo.getModelo());
+            pstm.setInt(4, emprestimo.getDestino().getId());
+            pstm.setInt(5, emprestimo.getNome().getId());
+            pstm.setDate(6, new java.sql.Date(emprestimo.getDataSaida().getTime()));
+            pstm.setDate(7, new java.sql.Date(emprestimo.getDataDevolucao().getTime()));
+            pstm.setString(8, emprestimo.getStatus());
+            pstm.setString(9, emprestimo.getTipo());
+            pstm.setString(10, emprestimo.getObservacao());
+            pstm.setString(11, emprestimo.getTombo());
+            pstm.setString(12, emprestimo.getSerie());
+                
+                pstm.execute();
+                
+            }
+            catch (SQLException ex)
+            {
+                
+                JOptionPane.showMessageDialog(null, "Error ao atualizar emprestimo no banco de dados!" + ex,"Error!", JOptionPane.INFORMATION_MESSAGE);
+                
+            }
+            finally
+            {
+                
+                //feche a conexao e o pstm 
+                conexao.close();
+                pstm.close();                 
+                
+            }               
+        
+    }    
+    
     //metodo para trazer todos emprestimos do banco de dados
     public ArrayList<Emprestimo> selecioneAllEmprestimos() throws SQLException
     {

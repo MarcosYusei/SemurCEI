@@ -438,9 +438,8 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-
         //controller chama metodo update emprestimo
-
+        controller.UpdateEmprestimo();
         //chama o metodo iniciar;
         iniciar();        
         

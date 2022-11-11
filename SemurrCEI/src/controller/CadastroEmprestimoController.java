@@ -189,6 +189,97 @@ public class CadastroEmprestimoController
         
     }            
     
+    //metodo para atualizar emprestimo
+    public void UpdateEmprestimo()
+    {
+        
+        //comparações logicas
+        if(view.getTxtUnidade().getSelectedIndex() != 0 && view.getTxtTipoEquip().getSelectedIndex() != 0 && view.getTxtModelo().getSelectedIndex() != 0 && view.getTxtDestino().getSelectedIndex() != 0
+        && view.getTxtNome().getSelectedIndex() != 0 && view.getTxtDataSaida().getDate()==null && view.getTxtDataDevolucao().getDate()==null && view.getTxtStatus().getSelectedIndex() != 0 && view.getTxtObservacao().getText().trim().isEmpty()
+        && view.getTxtTombo().getSelectedIndex() != 0 && view.getTxtSerie().getSelectedIndex() != 0)
+        {
+            
+            JOptionPane.showMessageDialog(null, "Campos obrigatorios vazios, selecione-os!!","ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            
+        }   
+        if(view.getTxtUnidade().getSelectedIndex() != 0 && view.getTxtTipoEquip().getSelectedIndex() != 0)
+        {    
+        
+            JOptionPane.showMessageDialog(null, "Campos unidade e/ou tipo equipamento vazio/s, selecione-os","ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            
+        }
+        if(view.getTxtDestino().getSelectedIndex() != 0 && view.getTxtModelo().getSelectedIndex() != 0)
+        {    
+        
+            JOptionPane.showMessageDialog(null, "Campos destino e/ou modelo vazio/s, selecione-os","ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            
+        }       
+        if(view.getTxtDataSaida().getDate()==null && view.getTxtDataDevolucao().getDate()==null)
+        {    
+        
+            JOptionPane.showMessageDialog(null, "Campos data saida e/ou data devolucão vazio/s, selecione-os","ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            
+        }     
+        if(view.getTxtStatus().getSelectedIndex() == 0)
+        {    
+        
+            JOptionPane.showMessageDialog(null, "Campo status vazio, selecione-os","ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            
+        }    
+        if(view.getTxtTipo().getSelectedIndex() != 0)
+        {    
+        
+            JOptionPane.showMessageDialog(null, "Campo tipo vazio, selecione-os","ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            
+        }       
+        if(view.getTxtTombo().getSelectedIndex() != 0 && view.getTxtSerie().getSelectedIndex() != 0)
+        {    
+        
+            JOptionPane.showMessageDialog(null, "Campo tombo e/serie vazios, selecione-os","ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            
+        }
+        
+            //compara se todos os campos foram preenchidos
+            if(view.getTxtUnidade().getSelectedItem() != null && view.getTxtTipoEquip().getSelectedItem() != null && view.getTxtModelo().getSelectedItem() != null
+            && view.getTxtDestino().getSelectedItem() != null && view.getTxtNome().getSelectedItem() != null && view.getTxtDataSaida().getDate() != null && view.getTxtDataDevolucao().getDate() != null
+            && view.getTxtStatus().getSelectedItem() != null && view.getTxtTipo().getSelectedItem() != null && view.getTxtTombo().getSelectedItem() != null & view.getTxtSerie().getSelectedItem() != null)
+            {
+                
+                    //pega um emprestimo da view Emprestimo
+                    Emprestimo emprestimo = helper.obterModeloSemID();
+                    
+                    try
+                    {
+                    //cria objeto do tipo connection conexao passando novo Conexao(conexao.java) chamando metodo conectar
+                    Connection conexao = new Conexao().Conectar();
+                    //cria objeto do tipo EmprestimoDAO chamado emprestimoDAO passando novo EmprestimoDAO recebendo conexao
+                    EmprestimoDAO emprestimoDAO = new EmprestimoDAO(conexao);
+                    //emprestimoDAO chama metodo atualizar passando emprestimo
+                    emprestimoDAO.atualizar(emprestimo);     
+            
+                    //helper chama o metodo bloquear campos
+                    helper.bloquearCampos();            
+            
+                    //helper chama metodo limpar tela(Campos)
+                    helper.limparTela();    
+            
+                    //chama tabela emprestimo;
+                    tabelaEmprestimo();               
+            
+                    JOptionPane.showMessageDialog(null, "Equipamento atualizado com sucesso!");
+                    }
+                    //pegue exceção sql  
+                    catch(SQLException ex)
+                    {
+                        
+                        JOptionPane.showMessageDialog(null, "Error ao atualizar emprestimo no banco de dados! /nError:"+ex);
+                        
+                    }    
+                
+            }        
+        
+    }        
+    
     //metodo para devolver emprestimo
     public void DevolverEmprestimo()
     {
