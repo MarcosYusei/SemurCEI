@@ -35,7 +35,7 @@ public class TipoEquipamentoDAO
             //antes de executar pstm setString
             pstm.setString(1, tipoequipamento.getTipoequipamento());
             //execute o pstm
-            pstm.execute();            
+            pstm.execute();         
             
         }
         catch(SQLException ex)
@@ -70,7 +70,7 @@ public class TipoEquipamentoDAO
             pstm.setString(1, tipoequipamento.getTipoequipamento());
             pstm.setInt(2, tipoequipamento.getId());
 
-            pstm.execute();            
+            pstm.execute();         
             
         }
         catch(SQLException ex)
@@ -104,7 +104,7 @@ public class TipoEquipamentoDAO
             
             //antes de executar pstm setString
             pstm.setInt(1, tipoequipamento.getId());
-            pstm.execute();            
+            pstm.execute();       
             
         }
         catch(SQLException ex)

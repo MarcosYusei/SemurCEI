@@ -35,7 +35,7 @@ public class FornecedorDAO
             //antes de executar pstm setString
             pstm.setString(1, fornecedor.getFornecedornome());
             //execute o pstm
-            pstm.execute();            
+            pstm.execute();          
             
         }
         catch(SQLException ex)
@@ -70,7 +70,7 @@ public class FornecedorDAO
             pstm.setString(1, fornecedor.getFornecedornome());
             pstm.setInt(2, fornecedor.getId());
 
-            pstm.execute();            
+            pstm.execute();              
             
         }
         catch(SQLException ex)
@@ -104,7 +104,7 @@ public class FornecedorDAO
             
             //antes de executar pstm setInt
             pstm.setInt(1, fornecedor.getId());
-            pstm.execute();            
+            pstm.execute();             
             
         }
         catch(SQLException ex)

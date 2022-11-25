@@ -36,7 +36,7 @@ public class FabricanteDAO
             //antes de executar pstm setString
             pstm.setString(1, fabricante.getFabricantenome());
             //execute o pstm
-            pstm.execute();
+            pstm.execute();    
             
         }
         catch(SQLException ex)
@@ -73,6 +73,8 @@ public class FabricanteDAO
             pstm.setString(1, fabricante.getFabricantenome());
             pstm.setInt(2, fabricante.getId());
             
+            pstm.execute();    
+            
         }
         catch(SQLException ex)
         {
@@ -105,7 +107,7 @@ public class FabricanteDAO
             
             //antes de executar pstm setString
             pstm.setInt(1, fabricante.getId());
-            pstm.execute();
+            pstm.execute();    
             
         }
         catch(SQLException ex)

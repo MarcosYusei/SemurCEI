@@ -56,7 +56,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1250, 650));
         setResizable(false);
 
         JBackground1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/APRESENTACAO_NTI.png"))); // NOI18N
@@ -64,6 +63,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuBar1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.default.borderColor"));
 
         jConexao.setText("Conexao");
+        jConexao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jConexaoActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jConexao);
 
         jMenuCadastro.setText("Cadastro");
@@ -225,6 +229,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         TelaCadastroPessoa telacadNome = new TelaCadastroPessoa();
         telacadNome.setVisible(true);  
     }//GEN-LAST:event_jMenuNomeActionPerformed
+
+    private void jConexaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConexaoActionPerformed
+
+    }//GEN-LAST:event_jConexaoActionPerformed
 
     /**
      * @param args the command line arguments

@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< Updated upstream
 -- Tempo de geração: 08-Nov-2022 às 15:30
+=======
+-- Tempo de geração: 22-Nov-2022 às 15:54
+>>>>>>> Stashed changes
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -52,7 +56,11 @@ CREATE TABLE `emprestimo` (
   `nome` int(7) NOT NULL,
   `dataSaida` date NOT NULL,
   `dataDevolucao` date NOT NULL,
+<<<<<<< Updated upstream
   `status` varchar(10) NOT NULL,
+=======
+  `status` varchar(15) NOT NULL,
+>>>>>>> Stashed changes
   `tipo` varchar(10) NOT NULL,
   `observacao` varchar(250) NOT NULL,
   `tombo` varchar(10) NOT NULL,
@@ -83,7 +91,11 @@ CREATE TABLE `equipamento` (
   `fornecedor` int(7) NOT NULL,
   `fabricante` int(7) NOT NULL,
   `modelo` varchar(30) NOT NULL,
+<<<<<<< Updated upstream
   `status` varchar(10) DEFAULT NULL,
+=======
+  `status` varchar(15) DEFAULT NULL,
+>>>>>>> Stashed changes
   `equipamento` varchar(30) DEFAULT NULL,
   `observacao` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -93,9 +105,43 @@ CREATE TABLE `equipamento` (
 --
 
 INSERT INTO `equipamento` (`id`, `unidade`, `tipoequip`, `tombo`, `serie`, `fornecedor`, `fabricante`, `modelo`, `status`, `equipamento`, `observacao`) VALUES
+<<<<<<< Updated upstream
 (1, 1, 3, 'S/T', '001890', 3, 3, '22MP55PQ-BK', 'FUNCIONAL', 'PATRIMONIO', ''),
 (2, 1, 1, '307-816', '764936', 3, 5, 'L5000', 'FUNCIONAL', 'PATRIMONIO', ''),
 (3, 1, 6, '356-179', '00024', 3, 6, 'LM1000B1', 'FUNCIONAL', 'PATRIMONIO', '');
+=======
+(1, 1, 3, 'S/T', '01890', 1, 3, '22MP55PQ-BK-01', 'FUNCIONAL', 'PATRIMONIO', ''),
+(2, 1, 1, '307-816', '764936', 3, 5, 'L5000-01', 'FUNCIONAL', 'PATRIMONIO', ''),
+(3, 1, 6, '356-179', '00024', 3, 6, 'LM100B1-02', 'FUNCIONAL', 'PATRIMONIO', ''),
+(4, 1, 6, '42290', '80068', 3, 6, 'ML1000B1-01', 'FUNCIONAL', 'PATRIMONIO', ''),
+(5, 1, 6, '356-167', '00017', 1, 6, 'ML1000B1-02', 'FUNCIONAL', 'PATRIMONIO', ''),
+(6, 1, 3, '507-835', '61822', 3, 5, '22HQLED-01', 'FUNCIONAL', 'PATRIMONIO', ''),
+(7, 1, 1, '76495', 'S/S', 3, 5, 'L5000-02', 'FUNCIONAL', 'PATRIMONIO', 'COMPUTADOR DE ROQUE'),
+(8, 1, 2, '358-797', '44970', 3, 13, 'MFC8712DW-01', 'FUNCIONAL', 'PATRIMONIO', ''),
+(9, 1, 9, '487-760', '679412', 3, 12, 'IDEAPAD S1451511L-01', 'FUNCIONAL', 'PATRIMONIO', ''),
+(11, 1, 3, 'S/T-01', '51291', 3, 7, '223V5L-01', 'FUNCIONAL', 'PATRIMONIO', 'MONITOR SEM ETIQUETA DE TOMBO'),
+(12, 1, 3, 'S/T-02', '54331', 3, 7, '223V5L-02', 'FUNCIONAL', 'PATRIMONIO', 'MONITOR SEM ETIQUETA DE TOMBO'),
+(13, 1, 9, '383-040', 'CW0TW', 3, 10, 'HP OFFICEJET PRO 8610-01', 'MANUTENCAO', 'PATRIMONIO', 'IMPRESSORA PRECISA IR PARA A MANUTENCAO'),
+(14, 1, 3, '507-831', '11148', 3, 5, '22HQ-LED-02', 'FUNCIONAL', 'PATRIMONIO', ''),
+(15, 1, 3, '507-834', '10801', 3, 5, '22HQLED-03', 'FUNCIONAL', 'PATRIMONIO', ''),
+(16, 1, 3, '507-829', '10919', 3, 5, '22HQLED-04', 'FUNCIONAL', 'PATRIMONIO', ''),
+(17, 1, 3, '507-832', '119990', 3, 5, '22HQLED-04', 'FUNCIONAL', 'PATRIMONIO', ''),
+(18, 1, 3, '507-833', '11115', 3, 5, '22HQLED-05', 'FUNCIONAL', 'PATRIMONIO', ''),
+(19, 1, 7, '356-174', '00010', 3, 6, 'ML1000B1-03', 'FUNCIONAL', 'PATRIMONIO', ''),
+(20, 1, 7, 'S/T-03', '24634', 3, 8, 'STATION11-01', 'MANUTENCAO', 'PATRIMONIO', ''),
+(21, 1, 7, 'S/T-04', '24639', 3, 8, 'STATION11-02', 'MANUTENCAO', 'PATRIMONIO', ''),
+(22, 1, 3, 'S/T-05', '54333', 3, 7, '223V5L-03', 'FUNCIONAL', 'PATRIMONIO', 'MONITOR SEM PLACA DE TOMBO'),
+(23, 1, 3, '507-827', '11147', 3, 5, '22HQLED-06', 'FUNCIONAL', 'PATRIMONIO', ''),
+(24, 1, 3, '507-830', '10804', 3, 5, '22HQLED-07', 'FUNCIONAL', 'PATRIMONIO', ''),
+(26, 1, 1, '507-872', '76491', 3, 5, 'L5000-03', 'FUNCIONAL', 'PATRIMONIO', ''),
+(27, 1, 1, '507-820', '76489', 3, 5, 'L5000-04', 'FUNCIONAL', 'PATRIMONIO', ''),
+(28, 1, 1, '507-818', '76488', 3, 5, 'L5000-05', 'FUNCIONAL', 'PATRIMONIO', ''),
+(29, 1, 1, '307-821', '76492', 3, 5, 'L5000-06', 'FUNCIONAL', 'PATRIMONIO', ''),
+(30, 1, 1, '507-817', '76490', 3, 5, 'L5000-07', 'FUNCIONAL', 'PATRIMONIO', ''),
+(31, 1, 1, '507-819', '76494', 3, 5, 'L5000-08', 'FUNCIONAL', 'PATRIMONIO', ''),
+(32, 1, 2, '404-299', '01418', 3, 9, 'POWERLITE S27-01', 'FUNCIONAL', 'PATRIMONIO', ''),
+(33, 1, 8, '453-673', '02524', 3, 14, 'L5XL5A-01', 'FUNCIONAL', 'PATRIMONIO', '');
+>>>>>>> Stashed changes
 
 -- --------------------------------------------------------
 
@@ -118,7 +164,19 @@ INSERT INTO `fabricante` (`id`, `fabricantenome`) VALUES
 (3, 'DATEN'),
 (4, 'TESTE'),
 (5, 'LOGIN'),
+<<<<<<< Updated upstream
 (6, 'BMI');
+=======
+(6, 'BMI'),
+(7, 'PHILIPS'),
+(8, 'SMS'),
+(9, 'EPSON'),
+(10, 'HP'),
+(11, 'ACER'),
+(12, 'LENOVO'),
+(13, 'BROTHER'),
+(14, 'LEXSOM');
+>>>>>>> Stashed changes
 
 -- --------------------------------------------------------
 
@@ -221,7 +279,14 @@ INSERT INTO `tipoequipamento` (`id`, `tipoequipamentonome`) VALUES
 (3, 'MONITOR'),
 (4, 'CABO HDMI'),
 (5, 'TESTE'),
+<<<<<<< Updated upstream
 (6, 'ESTABILIZADOR');
+=======
+(6, 'ESTABILIZADOR'),
+(7, 'NOBREAK'),
+(8, 'AMPLIFICADOR'),
+(9, 'NOTEBOOK');
+>>>>>>> Stashed changes
 
 -- --------------------------------------------------------
 
@@ -325,13 +390,21 @@ ALTER TABLE `emprestimo`
 -- AUTO_INCREMENT de tabela `equipamento`
 --
 ALTER TABLE `equipamento`
+<<<<<<< Updated upstream
   MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+=======
+  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+>>>>>>> Stashed changes
 
 --
 -- AUTO_INCREMENT de tabela `fabricante`
 --
 ALTER TABLE `fabricante`
+<<<<<<< Updated upstream
   MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+=======
+  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+>>>>>>> Stashed changes
 
 --
 -- AUTO_INCREMENT de tabela `fornecedor`
@@ -361,7 +434,11 @@ ALTER TABLE `nome`
 -- AUTO_INCREMENT de tabela `tipoequipamento`
 --
 ALTER TABLE `tipoequipamento`
+<<<<<<< Updated upstream
   MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+=======
+  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+>>>>>>> Stashed changes
 
 --
 -- AUTO_INCREMENT de tabela `unidade`

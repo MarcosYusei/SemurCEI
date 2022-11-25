@@ -236,6 +236,11 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
         getContentPane().add(lblCampo, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 290, 140, 30));
 
         txtCampo.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        txtCampo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCampoActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtCampo, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 290, 250, 30));
 
         lblStatus.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -866,6 +871,10 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
     private void txtFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFornecedorActionPerformed
             
     }//GEN-LAST:event_txtFornecedorActionPerformed
+
+    private void txtCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCampoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCampoActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

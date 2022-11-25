@@ -32,7 +32,7 @@ public class UnidadeDAO {
             //antes de executar pstm setString
             pstm.setString(1, unidade.getUnidadenome());
             //execute o pstm
-            pstm.execute();
+            pstm.executeUpdate();    
 
         } catch (SQLException ex) {
 
@@ -62,7 +62,7 @@ public class UnidadeDAO {
             pstm.setString(1, unidade.getUnidadenome());
             pstm.setInt(2, unidade.getId());
 
-            pstm.execute();
+            pstm.executeUpdate();    
 
         } catch (SQLException ex) {
 
@@ -90,7 +90,7 @@ public class UnidadeDAO {
 
             //antes de executar pstm setString
             pstm.setInt(1, unidade.getId());
-            pstm.execute();
+            pstm.executeUpdate();    
 
         } catch (SQLException ex) {
 

@@ -40,7 +40,7 @@ public class LoginDAO
                 pstm.setDate(6, new java.sql.Date(login.getData().getTime()));
                 
                 //execute o pstm
-                pstm.execute();                
+                pstm.execute();              
                 
             }
             catch(SQLException ex)
@@ -81,7 +81,7 @@ public class LoginDAO
                 pstm.setDate(6, new java.sql.Date(login.getData().getTime()));
                 pstm.setInt(7, login.getId());     
                 
-                pstm.execute();
+                pstm.execute();    
                 
             }
             catch (SQLException ex)
@@ -116,7 +116,7 @@ public class LoginDAO
                 //antes de executar pstm setString
                 pstm.setInt(1, login.getId());    
             
-                pstm.execute();                
+                pstm.execute();              
                 
             }
             catch(SQLException ex)

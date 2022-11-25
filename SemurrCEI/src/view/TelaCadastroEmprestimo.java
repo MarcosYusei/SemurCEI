@@ -1,5 +1,6 @@
 package view;
 
+import Relatorios.RelatorioGeralEmprestimos;
 import com.toedter.calendar.JDateChooser;
 import controller.CadastroEmprestimoController;
 import controller.helper.CadastroEmprestimoHelper;
@@ -47,6 +48,7 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTabelaCadEmprestimo = new javax.swing.JTable();
+        btnPDF = new javax.swing.JButton();
         lblTitulo = new javax.swing.JLabel();
         lblUnidade = new javax.swing.JLabel();
         lblID = new javax.swing.JLabel();
@@ -127,6 +129,17 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
         }
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 370, 1250, 280));
+
+        btnPDF.setBackground(new java.awt.Color(30, 129, 176));
+        btnPDF.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnPDF.setForeground(new java.awt.Color(255, 255, 255));
+        btnPDF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imagens/pdficone.png"))); // NOI18N
+        btnPDF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPDFActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnPDF, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 220, 70, 50));
 
         lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
@@ -435,6 +448,8 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
 
+        controller.selecioneAllEmprestimos();
+        
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
@@ -451,8 +466,13 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void jTabelaCadEmprestimoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabelaCadEmprestimoMouseClicked
+<<<<<<< Updated upstream
         //Chama o helper metodo obter modelo;
         helper.obterModeloSemID();
+=======
+        //chama o helper setar modelo
+        helper.setModelo();
+>>>>>>> Stashed changes
     }//GEN-LAST:event_jTabelaCadEmprestimoMouseClicked
 
     private void JButtonNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonNomeActionPerformed
@@ -495,6 +515,17 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
         
             
     }//GEN-LAST:event_txtModeloActionPerformed
+<<<<<<< Updated upstream
+=======
+
+    private void btnPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPDFActionPerformed
+
+        RelatorioGeralEmprestimos relatGeralEmp = new RelatorioGeralEmprestimos();
+        
+        relatGeralEmp.gerarPDF();
+
+    }//GEN-LAST:event_btnPDFActionPerformed
+>>>>>>> Stashed changes
 
     /**
      * @param args the command line arguments
@@ -770,6 +801,7 @@ public class TelaCadastroEmprestimo extends javax.swing.JFrame {
     public static javax.swing.JButton btnEditar;
     public static javax.swing.JButton btnEmprestar;
     public static javax.swing.JButton btnNovo;
+    public static javax.swing.JButton btnPDF;
     public static javax.swing.JButton btnPesquisar;
     public static javax.swing.JButton btnVoltar;
     private javax.swing.JScrollPane jScrollPane1;

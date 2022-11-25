@@ -3,9 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< Updated upstream
             <file>file:/S:/NTI/projeto%20estagio/SemurrCEI/src/model/DAO/EquipamentoDAO.java</file>
             <file>file:/S:/NTI/projeto%20estagio/SemurrCEI/src/controller/CadastroEmprestimoController.java</file>
             <file>file:/S:/NTI/projeto%20estagio/SemurrCEI/src/controller/helper/CadastroEmprestimoHelper.java</file>
+=======
+            <file>file:/C:/Users/marco/OneDrive/Documentos/Estagio/Projeto%20estagio/SemurrCEI/src/model/DAO/UnidadeDAO.java</file>
+            <file>file:/C:/Users/marco/OneDrive/Documentos/Estagio/Projeto%20estagio/SemurrCEI/src/controller/CadastroEmprestimoController.java</file>
+            <file>file:/C:/Users/marco/OneDrive/Documentos/Estagio/Projeto%20estagio/SemurrCEI/src/controller/helper/CadastroEmprestimoHelper.java</file>
+            <file>file:/C:/Users/marco/OneDrive/Documentos/Estagio/Projeto%20estagio/SemurrCEI/src/model/DAO/FornecedorDAO.java</file>
+            <file>file:/C:/Users/marco/OneDrive/Documentos/Estagio/Projeto%20estagio/SemurrCEI/src/model/DAO/TipoEquipamentoDAO.java</file>
+            <file>file:/C:/Users/marco/OneDrive/Documentos/Estagio/Projeto%20estagio/SemurrCEI/src/model/DAO/NomeDAO.java</file>
+            <file>file:/C:/Users/marco/OneDrive/Documentos/Estagio/Projeto%20estagio/SemurrCEI/src/model/DAO/EmprestimoDAO.java</file>
+            <file>file:/C:/Users/marco/OneDrive/Documentos/Estagio/Projeto%20estagio/SemurrCEI/src/model/DAO/EquipamentoDAO.java</file>
+            <file>file:/C:/Users/marco/OneDrive/Documentos/Estagio/Projeto%20estagio/SemurrCEI/src/model/DAO/LoginDAO.java</file>
+            <file>file:/C:/Users/marco/OneDrive/Documentos/Estagio/Projeto%20estagio/SemurrCEI/src/model/DAO/FabricanteDAO.java</file>
+>>>>>>> Stashed changes
         </group>
     </open-files>
 </project-private>

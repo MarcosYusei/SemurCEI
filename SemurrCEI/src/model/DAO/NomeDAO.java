@@ -36,7 +36,7 @@ public class NomeDAO
             //antes de executar pstm setString
             pstm.setString(1, nome.getNomepessoa());
             //execute o pstm
-            pstm.execute();            
+            pstm.execute();             
             
         }
         catch(SQLException ex)
@@ -71,7 +71,7 @@ public class NomeDAO
             pstm.setString(1, nome.getNomepessoa());
             pstm.setInt(2, nome.getId());
 
-            pstm.execute();            
+            pstm.execute();          
             
         }
         catch(SQLException ex)
@@ -105,7 +105,7 @@ public class NomeDAO
             
             //antes de executar pstm setString
             pstm.setInt(1, nome.getId());
-            pstm.execute();            
+            pstm.execute();           
             
         }
         catch(SQLException ex)

@@ -49,7 +49,7 @@ public class EquipamentoDAO
             pstm.setString(9, equipamento.getEquipamento());     
             pstm.setString(10, equipamento.getObservacao());
             //execute o pstm
-            pstm.execute();            
+            pstm.execute();           
             
         }
         catch(SQLException ex)
@@ -73,7 +73,7 @@ public class EquipamentoDAO
     {  
         
         String sql = "update equipamento set unidade = ?, tipoequip = ?, tombo = ?, serie = ?, fornecedor = ?,"
-                + "fabricante = ?, modelo = ?, status = ?, equipamento = ?, observacao = ? where id = ?";
+        + "fabricante = ?, modelo = ?, status = ?, equipamento = ?, observacao = ? where id = ?";
         
         //criamos um statement para executar a query sql
         PreparedStatement pstm = conexao.prepareStatement(sql);
@@ -94,7 +94,7 @@ public class EquipamentoDAO
             pstm.setString(10, equipamento.getObservacao());     
             pstm.setInt(11, equipamento.getId());
                 
-                pstm.execute();
+                pstm.execute();    
                 
             }
             catch (SQLException ex)
@@ -113,7 +113,6 @@ public class EquipamentoDAO
             }       
         
     }
-    
     
     //função deletar
     public void deletar(Equipamento equipamento) throws SQLException
@@ -1228,6 +1227,7 @@ public class EquipamentoDAO
         return equipamentos;        
     }           
 
+<<<<<<< Updated upstream
     public boolean selecionarFuncionalDisponivel(String equipamentoU) throws SQLException {
 
         ArrayList equipamentos = new ArrayList();
@@ -1236,13 +1236,30 @@ public class EquipamentoDAO
                 + "fornecedor as f on e.fornecedor = f.id inner join fabricante as fab on e.fabricante = fab.id where status = 'FUNCIONAL' OR status = 'DISPONIVEL' and e.modelo = ?";
         //Instrução SQL para seleção de registro específico da tabela equipamento;
         try {
+=======
+    //metodo para trazer o equipamento por modelo passando equip
+    public Equipamento selecioneEquipporModelo(String equipamentoU) throws SQLException {
+
+        //Faz a instancia da classe Equipamento  
+        Equipamento equipamento = new Equipamento();
+        
+        String sql = "select * from equipamento as e inner join unidade u on e.unidade = u.id inner join tipoequipamento as tp on e.tipoequip = tp.id inner join fornecedor as f on e.fornecedor = f.id inner join fabricante as fab on e.fabricante where e.modelo = ? group by e.id";
+
+        try {
+
+>>>>>>> Stashed changes
             PreparedStatement pstm = conexao.prepareStatement(sql);
 
             pstm.setString(1, equipamentoU);
 
             ResultSet rs = pstm.executeQuery();
+<<<<<<< Updated upstream
             while (rs.next()) {
                 Equipamento equipamento = new Equipamento();
+=======
+
+            while (rs.next()) {
+>>>>>>> Stashed changes
                 //Laço de repetição para preencher com os dados do banco o objeto equipamento;
                 equipamento.setId(rs.getInt("id"));
 
@@ -1275,6 +1292,7 @@ public class EquipamentoDAO
 
                 equipamento.setModelo(rs.getString("modelo"));
 
+<<<<<<< Updated upstream
                 String Stats = rs.getString("status");
 
                 equipamento.setStatus(rs.getString("status"));
@@ -1294,6 +1312,13 @@ public class EquipamentoDAO
                     return false;
 
                 }
+=======
+                equipamento.setStatus(rs.getString("status"));            
+                
+                equipamento.setEquipamento(rs.getString("equipamento"));
+                equipamento.setObservacao(rs.getString("observacao"));
+                //"seta" os atributos da classe Equipamento com os dados dos campos do banco - pega os dados do banco para pesquisa no formulário;
+>>>>>>> Stashed changes
 
             }
         } catch (SQLException ex) {
@@ -1305,7 +1330,15 @@ public class EquipamentoDAO
             conexao.close();
 
         }
+<<<<<<< Updated upstream
 
         return false;
     }
+=======
+        //retorne o array equipamentos  
+        return equipamento;
+    }
+
+    
+>>>>>>> Stashed changes
 }

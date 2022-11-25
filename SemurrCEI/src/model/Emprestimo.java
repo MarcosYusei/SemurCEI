@@ -8,7 +8,7 @@ import java.util.Locale;
 public class Emprestimo
 {
     
-    public Integer id;
+    public int id;
     public Unidade unidade = new Unidade();
     public TipoEquipamento tipoequip = new TipoEquipamento();
     public String modelo;
@@ -23,7 +23,11 @@ public class Emprestimo
     public String serie;    
     
     //Metodo construtor passando todos campos como obrigatorios
+<<<<<<< Updated upstream
     public Emprestimo(Integer id,Unidade unidade, TipoEquipamento tipoequip,String modelo,Unidade destino, Nome nome, Date dataSaida, Date dataDevolucao, String status, String tipo, String observacao, String tombo, String serie) {
+=======
+    public Emprestimo(int id,Unidade unidade, TipoEquipamento tipoequip,String modelo,Unidade destino, Nome nome, Date dataSaida, Date dataDevolucao, String status, String tipo, String observacao, String tombo, String serie) {
+>>>>>>> Stashed changes
         this.id = id;
         this.unidade = unidade;
         this.tipoequip = tipoequip;
@@ -124,11 +128,11 @@ public class Emprestimo
     }
 
     //Getters e setters
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
